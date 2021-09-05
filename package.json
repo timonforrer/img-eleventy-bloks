@@ -1,0 +1,22 @@
+{
+  "name": "img-eleventy-bloks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "",
+    "dev": "",
+    "debug": ""
+  },
+  "keywords": [],
+  "author": "Timon Forrer",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^10.2.0",
+    "puppeteer-core": "^10.2.0"
+  }
+}
