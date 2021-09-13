@@ -1,3 +1,8 @@
 node_modules/
 prebuild/
 dist/
+.cache/
+.DS_Store
+
+# Local Netlify folder
+.netlify
