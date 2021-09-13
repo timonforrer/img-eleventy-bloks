@@ -4,19 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "",
-    "dev": "",
-    "debug": ""
+    "clean": "rimraf dist prebuild",
+    "build": "npm run clean && npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve",
+    "debug": "npm run clean && NODE_ENV=debug netlify dev:exec npx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "Timon Forrer",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0-canary.42",
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "chrome-aws-lambda": "^10.1.0",
-    "node-fetch": "^2.6.1",
+    "fast-glob": "^3.2.7",
     "puppeteer": "^10.2.0",
-    "puppeteer-core": "^10.2.0"
+    "puppeteer-core": "^10.2.0",
+    "rimraf": "^3.0.2",
+    "slugify": "^1.6.0"
   }
 }
