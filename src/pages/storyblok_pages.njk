@@ -1,0 +1,12 @@
+---
+permalink: "{{ pagination.pageNumber }}.html"
+eleventyComputed:
+  img_file_name: "{{ pdata.file }}"
+  permalink: "{{ pdata.file }}.html"
+pagination:
+  data: storyblok_pages
+  size: 1
+  alias: pdata
+layout: social_image.njk
+---
+{{ img_file_name }}
