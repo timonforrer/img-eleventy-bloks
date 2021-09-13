@@ -1,0 +1,12 @@
+---
+layout: base.njk
+permalink: index.html
+---
+
+<h1>Index of Social Images</h1>
+
+<ul>
+{% for page in storyblok_pages %}
+  <li><a href="{{ '/' + page.file + '.html' }}">{{ page.meta_tags.title }}</a></li>
+{% endfor %}
+</ul>
