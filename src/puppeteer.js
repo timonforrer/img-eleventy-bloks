@@ -31,7 +31,7 @@ module.exports = async function() {
     browser = await chromium.puppeteer.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-      headless: true
+      headless: await chromium.headless
     });
 
     const page = await browser.newPage();
