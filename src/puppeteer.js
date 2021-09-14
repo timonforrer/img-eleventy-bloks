@@ -1,5 +1,4 @@
 const chromium = require('chrome-aws-lambda');
-// const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
 const fg = require('fast-glob');
