@@ -25,14 +25,15 @@ module.exports = async function() {
     }
   });
 
-  let browser = null;
 
-  try {
-    browser = await chromium.puppeteer.launch({
+  (async () => {
+    const browserArgs = {
       args: chromium.args,
-      executablePath: await chromium.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-      headless: await chromium.headless
-    });
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+    }
+
+    const browser = await chromium.puppeteer.launch(browserArgs);
 
     const page = await browser.newPage();
 
@@ -49,12 +50,5 @@ module.exports = async function() {
         quality: 80 
       });
     }
-  } catch (err) {
-    console.log(err);
-  } finally {
-    return
-    // if (browser !== undefined) {
-    //   await browser.close();
-    // }
-  }
+  });
 }
