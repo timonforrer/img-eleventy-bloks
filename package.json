@@ -16,7 +16,6 @@
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "chrome-aws-lambda": "^10.1.0",
     "fast-glob": "^3.2.7",
-    "puppeteer": "^10.2.0",
     "puppeteer-core": "^10.2.0",
     "rimraf": "^3.0.2",
     "slugify": "^1.6.0"

@@ -1,5 +1,5 @@
 const chromium = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
 const fg = require('fast-glob');
@@ -26,14 +26,17 @@ module.exports = async function() {
     }
   });
 
+  let browser = null;
+
   try {
-    const executablePath = await chromium.executablePath;
-    const browser = await chromium.puppeteer.launch({
+    browser = await chromium.puppeteer.launch({
       args: chromium.args,
-      executablePath: executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      executablePath: await chromium.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
       headless: true
     });
+
     const page = await browser.newPage();
+
     await page.setViewport({
       width: 1200,
       height: 627
