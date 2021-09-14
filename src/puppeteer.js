@@ -7,31 +7,32 @@ const fg = require('fast-glob');
 module.exports = async function() {
   const input = './prebuild';
 
-  fs.mkdirSync('./dist/');
-
-  // function to get content of single file
-  const readFile = function(file) {
-    return new Promise((resolve, reject) => {
-      fs.readFile(file.path, 'utf-8', (err, data) => {
-        if(err) reject(err);
-        let mod_data = data.replace(/\.\.\/images\//, './src/assets/images/');
-        resolve({ data: mod_data, name: file.name });
-      });
-    });
+  if(!fs.existsSync('./dist/')) {
+    fs.mkdirSync('./dist/');
   }
-    
+
+  // get all html files from folder
   let files = await fg(`${input}/*.html`);
 
+  // exclude index file
+  files = files.filter(fileName => fileName !== `${input}/index.html`);
+
+  // process filenames and add info (name of file without suffix/path + file url for browser)
   files = files.map(file => {
     return {
       relative_path: file,
-      url: `file://${path.resolve(file)}`,
-      name: file.replace(/.html/, '').slice(input.length+1)
+      name: file.replace(/.html/, '').slice(input.length+1),
+      url: `file://${path.resolve(file)}`
     }
   });
 
   try {
-    const browser = await puppeteer.launch();
+    const executablePath = await chromium.executablePath;
+    const browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      executablePath: executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      headless: true
+    });
     const page = await browser.newPage();
     await page.setViewport({
       width: 1200,
