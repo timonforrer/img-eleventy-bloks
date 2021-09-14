@@ -16,21 +16,22 @@ module.exports = async function() {
   // exclude index file
   files = files.filter(fileName => fileName !== `${input}/index.html`);
 
-  // process filenames and add info (name of file without suffix/path + file url for browser)
-  files = files.map(file => {
-    return {
-      relative_path: file,
-      name: file.replace(/.html/, '').slice(input.length+1),
-      url: `file://${path.resolve(file)}`
-    }
-  });
+  console.log(files);
 
+  const screenshot = async () => {
+    // process filenames and add info (name of file without suffix/path + file url for browser)
+    files = files.map(file => {
+      return {
+        relative_path: file,
+        name: file.replace(/.html/, '').slice(input.length+1),
+        url: `file://${path.resolve(file)}`
+      }
+    });
 
-  (async () => {
     const browserArgs = {
       args: chromium.args,
       executablePath: await chromium.executablePath,
-      headless: chromium.headless,
+      headless: true
     }
 
     const browser = await chromium.puppeteer.launch(browserArgs);
@@ -50,5 +51,7 @@ module.exports = async function() {
         quality: 80 
       });
     }
-  });
+  }
+
+  screenshot(files);
 }
