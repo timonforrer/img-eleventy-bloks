@@ -51,6 +51,8 @@ module.exports = async function() {
         quality: 80 
       });
     }
+
+    browser.close()
   }
 
   screenshot(files);
