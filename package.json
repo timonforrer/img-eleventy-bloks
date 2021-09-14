@@ -6,8 +6,7 @@
   "scripts": {
     "clean": "rimraf dist prebuild",
     "build": "npm run clean && npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve",
-    "debug": "npm run clean && NODE_ENV=debug netlify dev:exec npx @11ty/eleventy --serve"
+    "dev": "npm run clean && NODE_ENV=debug netlify dev:exec npx @11ty/eleventy --serve"
   },
   "keywords": [],
   "author": "Timon Forrer",
