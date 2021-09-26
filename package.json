@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist prebuild",
-    "build": "npm run clean && npx @11ty/eleventy",
+    "build": "npm run clean && netlify dev:exec npx @11ty/eleventy",
     "dev": "npm run clean && NODE_ENV=debug netlify dev:exec npx @11ty/eleventy --serve"
   },
   "keywords": [],
