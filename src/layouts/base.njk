@@ -5,6 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social Image for {{ title }}</title>
+  <style>
+  @font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: local('Barlow Black'), local('Barlow-Black'), url({{ '/assets/Barlow-Black.woff' | toFullPath }}) format('woff');
+  }
+  body {
+    font-family: Barlow;
+  }
+  </style>
 </head>
 <body>
   {% block content %}
