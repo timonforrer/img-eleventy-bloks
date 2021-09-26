@@ -1,9 +1,51 @@
 {% extends './base.njk' %}
 
+{% block styles%}
+<style>
+* {
+  margin: 0;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Barlow Black'), local('Barlow-Black'), url({{ '/assets/Barlow-Black.woff' | toFullPath }}) format('woff');
+}
+body {
+  background-color: #212121;
+  color: #fafafa;
+  font-family: Barlow;
+}
+.logo {
+  margin-top: -3rem;
+  max-width: 30vw;
+  opacity: 0.75;
+}
+.center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+h1 {
+  font-size:  4rem;
+}
+.stack > * ~ * {
+  margin-top: 1rem;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 
-<img src="{{ '/assets/white-green-nobg.png' | toFullPath }} " alt="">
+<div class="container">
+  <div class="center stack">
+    <img class="logo" src="{{ '/assets/white-green-nobg.png' | toFullPath }} " alt="">
+    <h1>{{ pdata.meta_tags.title }}</h1>
+  </div>
+</div>
 
-{{ pdata | dump(2) }}
 
 {% endblock %}
